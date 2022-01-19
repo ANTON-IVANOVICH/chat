@@ -1,0 +1,80 @@
+.room {
+  height: 100vh;
+  width: 75%;
+  background-color: rgb(44, 44, 44);
+  
+  &__header {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    height: 5%;
+
+    &_image {
+      margin-right: 10px;
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    &_title {
+      margin-right: auto;
+      color: #fff;
+    }
+
+    &_search {
+      margin-right: 20px;
+    }
+
+    &_options {}
+  }
+
+  &__chat {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    height: 95%;
+    background-color: rgb(20, 20, 20);
+  }
+
+  &__conversation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 120px;
+  }
+
+  &__message {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_textarea {
+      width: 60%;
+      height: 100px;
+      padding: 20px 40px; 
+      margin-right: 20px;
+      border-radius: 10px;
+      border: none;
+      border-bottom-right-radius: 0;
+      color: #fff;
+      font-weight: 500;
+      font-size: 18px;
+      resize: none;
+      background-color: rgb(44, 44, 44);
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &_send_btn {
+      height: 35px;
+    }
+  }
+}
