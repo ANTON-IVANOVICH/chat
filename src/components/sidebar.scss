@@ -51,7 +51,7 @@
         color: #a2acb4;
       }
 
-      &:focus-visible, 
+      &:focus-visible,
       &:focus {
         outline: none;
         border-color: #8774E1 !important;
@@ -75,6 +75,7 @@
       padding: 20px;
       font-size: 20px;
       color: #fff;
+      cursor: pointer;
 
       &_image {
         margin-right: 10px;

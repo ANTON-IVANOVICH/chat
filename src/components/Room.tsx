@@ -43,11 +43,11 @@ const Room: FC = () => {
         <button className="room__header_options"><MoreVertIcon sx={{ color: grey[500] }} fontSize='large' /></button>
       </div>
       <div className="room__chat">
-        <div className="room__conversation">
+        <ul className="room__conversation">
           {messages && messages.map((msg: IMessage) => <Message key={Math.floor(Math.random() * 99999)} msg={msg}/>)}
-        </div>
+        </ul>
         <div className="room__message">
-          <textarea placeholder='Enter your message' className="room__message_textarea" ref={messageRef}></textarea>
+          <textarea placeholder='Enter your message' className="room__message_textarea" ref={messageRef} maxLength={100}></textarea>
           <button className="room__message_send_btn" onClick={handleSendMsg}><SendIcon sx={{ color: grey[500] }} fontSize='large' /></button>
         </div>
       </div>

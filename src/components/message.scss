@@ -3,6 +3,7 @@
   display: flex;
   width: 65%;
   margin-bottom: 20px;
+  z-index: 1;
 
   &__author_info {
     margin-right: 20px;
@@ -27,7 +28,7 @@
   }
 
   &__content {
-    padding: 10px;
+    padding: 10px 15px;
     width: 80%;
     background-color: rgb(44, 44, 44);
     border-radius: 10px;
@@ -38,8 +39,8 @@
 
   &__dateTime {
     position: absolute;
-    right: -60px;
-    bottom: 37px;
+    right: -100px;
+    bottom: 15px;
     color: #fff;
     font-weight: 700;
     font-size: 14px;

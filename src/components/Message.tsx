@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { IMessage } from './Room';
 import './message.scss';
+// import moment from 'moment';
 
 type Props = {
   msg: IMessage;
@@ -12,19 +13,19 @@ const Message: FC<Props> = ({ msg }) => {
     const currentTime = new Date();
 
     return (
-      <div className='message'>
+      <li className='message'>
         <div className='message__content'>
           <p>{message}</p>
         </div>
-        <span className='message__dateTime'>{currentTime.getHours()}:{currentTime.getMinutes()} {currentTime.getDate()}.{currentTime.getMonth() + 1}.{currentTime.getFullYear()}</span>
-      </div>
+        <span className='message__dateTime'>{currentTime.getHours()}:{currentTime.getMinutes()} {currentTime.getDate()}.{currentTime.getMonth()+1}.{currentTime.getFullYear()}</span>
+      </li>
     );
   } else {
     const { text, time, msgID, author, avatar } = msg;
     const formatTime = new Date(time)
 
     return (
-      <div className='message'>
+      <li className='message'>
         <div className="message__author_info">
           <img className='message__author_info_image' src={avatar} alt={author} />
           <h4 className='message__author_info_author'>{author}</h4>
@@ -32,8 +33,8 @@ const Message: FC<Props> = ({ msg }) => {
         <div className='message__content'>
           <p>{text}</p>
         </div>
-        <span className='message__dateTime'>{formatTime.getHours()}:{formatTime.getMinutes()} {formatTime.getDate()}.{formatTime.getMonth() + 1}.{formatTime.getFullYear()}</span>
-      </div>
+        <span className='message__dateTime'>{formatTime.getHours()}:{formatTime.getMinutes()} {formatTime.getDate()}.{formatTime.getMonth()+1}.{formatTime.getFullYear()}</span>
+      </li>
     );
   }
 };
