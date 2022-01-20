@@ -15,7 +15,7 @@ const Sidebar: FC = () => {
         <img className="sidebar__room_list_item_image" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cm9vbXxlbnwwfHwwfHw%3D&w=1000&q=80" alt="" />
           Room 1
         </li>
-        {/* <li className="sidebar__room_list_item">
+        <li className="sidebar__room_list_item">
         <img className="sidebar__room_list_item_image" src="https://media.istockphoto.com/photos/bohemian-living-room-interior-3d-render-picture-id1182454657?k=20&m=1182454657&s=612x612&w=0&h=1xEsm7BqeicA8jYk9KlerUtGsAgzzo530l5Ak1HJdnc=" alt="" />
           Room 2
         </li>
@@ -46,7 +46,7 @@ const Sidebar: FC = () => {
         <li className="sidebar__room_list_item">
         <img className="sidebar__room_list_item_image" src="https://www.thespruce.com/thmb/9zdyLzPobCbaJrCfue4JR-xe6Ps=/2075x1167/smart/filters:no_upscale()/living-room-dos-and-donts-2213467-hero-da82a4643bc84d669a0a34f64e60beb1.jpg" alt="" />
           Room 9
-        </li> */}
+        </li>
       </ul>
     </div>
   );

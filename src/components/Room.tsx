@@ -1,15 +1,15 @@
-import { FC, useState, useRef, useEffect } from 'react';
+import { FC, useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { sendMSG } from '../redux/socketSlice';
 import Message from './Message';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { grey } from '@mui/material/colors';
 import SendIcon from '@mui/icons-material/Send';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { sendMSG } from '../redux/socketSlice';
 import './room.scss';
 
 export interface IMessage {
-  message: string;
+  text: string;
   time: Date;
   msgID: Date;
   author: string;
@@ -17,19 +17,20 @@ export interface IMessage {
 };
 
 const Room: FC = () => {
-  const [messages, setMessages] = useState([] as IMessage[]);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+  const [messages, setMessages] = useState([] as IMessage[] | any);
   const socket = useAppSelector(state => state.socket);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (socket) setMessages((prev: any) => ([...prev, socket.message ]));
+  }, [socket]);
 
   const handleSendMsg = () => {
     if (messageRef.current !== null) {
       const newMessage = messageRef.current.value;
       dispatch(sendMSG(newMessage));
       messageRef.current.value = '';
-      console.log('messages[]', messages);
-      console.log('socket', socket);
-      console.log('dispatch', dispatch);
     };
   };
 
@@ -43,10 +44,10 @@ const Room: FC = () => {
       </div>
       <div className="room__chat">
         <div className="room__conversation">
-          {messages && messages.map(msg => <Message key={Number(msg.time)} msg={msg}/>)}
+          {messages && messages.map((msg: IMessage) => <Message key={Math.floor(Math.random() * 99999)} msg={msg}/>)}
         </div>
         <div className="room__message">
-          <textarea placeholder='Message' className="room__message_textarea" ref={messageRef}></textarea>
+          <textarea placeholder='Enter your message' className="room__message_textarea" ref={messageRef}></textarea>
           <button className="room__message_send_btn" onClick={handleSendMsg}><SendIcon sx={{ color: grey[500] }} fontSize='large' /></button>
         </div>
       </div>

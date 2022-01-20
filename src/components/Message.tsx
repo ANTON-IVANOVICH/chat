@@ -7,22 +7,35 @@ type Props = {
 }
 
 const Message: FC<Props> = ({ msg }) => {
-  const { message, time, msgID } = msg;
+  if (typeof msg === 'string') {
+    const message = msg;
+    const currentTime = new Date();
 
-  console.log('msg', msg);
+    return (
+      <div className='message'>
+        <div className='message__content'>
+          <p>{message}</p>
+        </div>
+        <span className='message__dateTime'>{currentTime.getHours()}:{currentTime.getMinutes()} {currentTime.getDate()}.{currentTime.getMonth() + 1}.{currentTime.getFullYear()}</span>
+      </div>
+    );
+  } else {
+    const { text, time, msgID, author, avatar } = msg;
+    const formatTime = new Date(time)
 
-  return (
-    <div className='message'>
-      <div className="message__author_info">
-        <img className='message__author_info_image' src='' alt='' />
-        <h4 className='message__author_info_author'>{}</h4>
+    return (
+      <div className='message'>
+        <div className="message__author_info">
+          <img className='message__author_info_image' src={avatar} alt={author} />
+          <h4 className='message__author_info_author'>{author}</h4>
+        </div>
+        <div className='message__content'>
+          <p>{text}</p>
+        </div>
+        <span className='message__dateTime'>{formatTime.getHours()}:{formatTime.getMinutes()} {formatTime.getDate()}.{formatTime.getMonth() + 1}.{formatTime.getFullYear()}</span>
       </div>
-      <div className='message__content'>
-        <p>{message}</p>
-      </div>
-      {/* <span className='message__dateTime'>{time.getHours()}:{time.getMinutes()} {time.getDate()}.{time.getMonth()}.{time.getFullYear()}</span> */}
-    </div>
-  );
+    );
+  }
 };
 
 export default Message;
