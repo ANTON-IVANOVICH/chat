@@ -1,6 +1,7 @@
 .message {
   position: relative;
   display: flex;
+  justify-self: end;
   width: 65%;
   margin-bottom: 20px;
   z-index: 1;
@@ -39,7 +40,7 @@
 
   &__dateTime {
     position: absolute;
-    right: -100px;
+    right: -25px;
     bottom: 15px;
     color: #fff;
     font-weight: 700;

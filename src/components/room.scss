@@ -12,19 +12,15 @@ html {
   position: relative;
   height: 100vh;
   width: 70%;
-  background-color: rgb(44, 44, 44);
+  background-color: #141414;
 
   &__header {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
     padding: 10px 15px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     height: 7%;
     background-color: rgb(44, 44, 44);
-    z-index: 10000;
 
 
     &_image {
@@ -58,36 +54,24 @@ html {
     }
   }
 
-  &__chat {
-    padding-top: 69px;
-    display: flex;
-    flex-direction: column-reverse;
-    position: relative;
-    height: 100%;
-    background-color: rgb(20, 20, 20);
-  }
-
   &__conversation {
+    height: 79%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-    padding-bottom: 120px;
-    overflow-y: auto;
+    overflow: auto;
   }
 
   &__message {
-    position: absolute;
-    bottom: 20px;
-    right: 0;
-    left: 0;
+    padding-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000;
+    background-color: #141414;
 
     &_textarea {
       width: 60%;
+      margin-bottom: 20px;
       height: 100px;
       padding: 20px 40px;
       margin-right: 20px;

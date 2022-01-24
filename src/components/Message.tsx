@@ -1,31 +1,29 @@
 import { FC } from 'react';
 import { IMessage } from './Room';
+import { format } from 'date-fns'
 import './message.scss';
-// import moment from 'moment';
 
 type Props = {
   msg: IMessage;
-}
+};
+
+const date = format(new Date(), 'HH:mm');
 
 const Message: FC<Props> = ({ msg }) => {
   if (typeof msg === 'string') {
-    const message = msg;
-    const currentTime = new Date();
-
     return (
-      <li className='message'>
+      <div className='message'>
         <div className='message__content'>
-          <p>{message}</p>
+          <p>{msg}</p>
         </div>
-        <span className='message__dateTime'>{currentTime.getHours()}:{currentTime.getMinutes()} {currentTime.getDate()}.{currentTime.getMonth()+1}.{currentTime.getFullYear()}</span>
-      </li>
+        <span className='message__dateTime'>{date}</span>
+      </div>
     );
   } else {
-    const { text, time, msgID, author, avatar } = msg;
-    const formatTime = new Date(time)
+    const { text, author, avatar } = msg;
 
     return (
-      <li className='message'>
+      <div className='message'>
         <div className="message__author_info">
           <img className='message__author_info_image' src={avatar} alt={author} />
           <h4 className='message__author_info_author'>{author}</h4>
@@ -33,11 +31,13 @@ const Message: FC<Props> = ({ msg }) => {
         <div className='message__content'>
           <p>{text}</p>
         </div>
-        <span className='message__dateTime'>{formatTime.getHours()}:{formatTime.getMinutes()} {formatTime.getDate()}.{formatTime.getMonth()+1}.{formatTime.getFullYear()}</span>
-      </li>
+        <span className='message__dateTime'>{date}</span>
+      </div>
     );
   }
 };
 
 export default Message;
 
+// eslint-disable-next-line no-lone-blocks
+{/* <span className='message__dateTime'>{formatTime.getHours()}:{formatTime.getMinutes()} {formatTime.getDate()}.{formatTime.getMonth()+1}.{formatTime.getFullYear()}</span> */}
